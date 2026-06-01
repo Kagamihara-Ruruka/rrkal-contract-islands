@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RendererSkinAssetSchema_v0.2.2",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": ["rrkal.renderer_skin_asset.v0.2.2"]
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["terrain"]
+    },
+    "asset_id": {
+      "type": "string"
+    },
+    "source_dataset": {
+      "type": "string"
+    },
+    "source_fingerprint": {
+      "type": "string",
+      "pattern": "^sha256:[a-fA-F0-9]{64}$"
+    },
+    "encoding": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["int16_meter"] },
+        "scale": { "type": "number" },
+        "offset": { "type": "number" },
+        "nodata_value": { "type": "integer" }
+      },
+      "required": ["type", "scale", "offset", "nodata_value"],
+      "additionalProperties": false
+    },
+    "projection": {
+      "type": "object",
+      "properties": {
+        "system": { "type": "string" },
+        "datum": { "type": "string" },
+        "unit": { "type": "string" }
+      },
+      "required": ["system"],
+      "additionalProperties": true
+    },
+    "grid": {
+      "type": "object",
+      "properties": {
+        "row_order": { "type": "string", "enum": ["south_to_north"] },
+        "col_order": { "type": "string", "enum": ["west_to_east"] },
+        "bounds_semantics": { "type": "string" },
+        "lon_wrap": { "type": "string" },
+        "lat_index_formula": { "type": "string" },
+        "lon_index_formula": { "type": "string" }
+      },
+      "required": ["row_order", "col_order"],
+      "additionalProperties": true
+    },
+    "bounds": {
+      "type": "object",
+      "properties": {
+        "lat_min": { "type": "number", "minimum": -90, "maximum": 90 },
+        "lat_max": { "type": "number", "minimum": -90, "maximum": 90 },
+        "lon_min": { "type": "number", "minimum": -180, "maximum": 180 },
+        "lon_max": { "type": "number", "minimum": -180, "maximum": 180 }
+      },
+      "required": ["lat_min", "lat_max", "lon_min", "lon_max"],
+      "additionalProperties": false
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "max_dimension": { "type": "integer" },
+        "max_levels": { "type": "integer" },
+        "max_payload_bytes": { "type": "integer" },
+        "allow_pickle": { "type": "boolean" }
+      },
+      "required": ["max_dimension", "max_levels", "max_payload_bytes", "allow_pickle"],
+      "additionalProperties": false
+    },
+    "levels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "level": { "type": "integer", "minimum": 0 },
+          "path": { "type": "string" },
+          "shape": {
+            "type": "array",
+            "items": { "type": "integer" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "cell_size_deg": { "type": "number" },
+          "raw_nbytes": { "type": "integer" },
+          "file_size_bytes": { "type": "integer" },
+          "compression": { "type": "string" },
+          "valid_mask": { "type": "string" },
+          "valid_mask_file_size_bytes": { "type": "integer" },
+          "land_fraction": { "type": "string" },
+          "land_fraction_file_size_bytes": { "type": "integer" },
+          "water_fraction": { "type": "string" },
+          "water_fraction_file_size_bytes": { "type": "integer" },
+          "minmax_path": { "type": "string" },
+          "minmax_file_size_bytes": { "type": "integer" },
+          "minmax_scope": { "type": "string", "enum": ["global_lod_summary"] }
+        },
+        "required": [
+          "level", "path", "shape", "cell_size_deg", "raw_nbytes",
+          "valid_mask", "land_fraction", "water_fraction",
+          "minmax_path", "minmax_scope"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "checksums": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^sha256:[a-fA-F0-9]{64}$"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ready"]
+    }
+  },
+  "required": [
+    "schema", "kind", "asset_id", "source_dataset", "source_fingerprint",
+    "encoding", "projection", "grid", "bounds", "limits", "levels",
+    "checksums", "status"
+  ],
+  "additionalProperties": false
+}
