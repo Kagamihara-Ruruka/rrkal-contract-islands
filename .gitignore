@@ -9,3 +9,6 @@ __pycache__/
 
 # Generated JSON output
 islands/skin_spec/examples/manifest.json
+
+# Local build outputs
+build/

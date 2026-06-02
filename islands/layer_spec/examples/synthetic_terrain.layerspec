@@ -1,0 +1,36 @@
+# 聲明式圖層渲染規格範例
+# synthetic_terrain.layerspec
+
+layer terrain_composite {
+  schema rrkal_displaytools.render_layer_spec.v0.2.1
+  layer_id synthetic_terrain_layer
+  layer_type terrain_skin
+  source_skin_asset terrain_synthetic_v0.2.2
+  source_manifest skins/terrain/manifest.json
+  visible true
+  opacity 1.0
+  blend_mode normal
+  render_queue_group opaque_terrain
+  lod_policy {
+    mode auto
+    interactive_level 2
+    preview_level 1
+    quality_level 0
+    export_level 0
+  }
+  coverage {
+    coverage_mask_kind valid_elevation_mask
+    resolve_by_lod true
+    opaque_mask {
+      opaque_mask_kind terrain_opaque_mask
+      threshold 255
+    }
+    requires_underlay false
+  }
+  update_policy {
+    interactive cached
+    settled refresh_if_dirty
+    export require_ready
+  }
+  status ready
+}
