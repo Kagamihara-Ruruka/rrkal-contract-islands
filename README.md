@@ -3,18 +3,23 @@
 本專案為 **`rrkal-contract-islands`（RRKAL 全域契約語法糖實驗室）**。它純粹作為一個 **「RRKAL contract authoring sugar」（RRKAL 契約撰寫語法糖）**，旨在提供更直覺、人類可讀的聲明式語法糖（如 `.skinisland`），用以靜態編譯並產生既有的標準 RRKAL JSON 契約（如 `manifest.json`）。
 
 > [!IMPORTANT]
-> **Owner 上下文提醒與邊界紅線（100% 遵循）：**
+> **專案治理與非生產聲明：**
+> * **非生產環境就緒 (Not production-ready)**：本實驗專案產出之代碼與工具僅作為外部原型參考（external reference prototype），絕非生產就緒代碼。
+> * **未授權合併產品 Repo (Not authorized for product repo integration)**：嚴禁將本專案的任何編譯或工具代碼併入三大產品倉庫中，主線倉庫維持唯讀。
+> * **需要 O_1 審查 (Requires o_1 review before product adoption)**：本專案之機制若要被產品主線採用，必須經過 `o_1` 進行嚴格審查與正式授權。
+>
+> **Owner 上下文提醒與邊界紅線：**
 > 1. **唯一合法定位**：本任務**不是**要做 RRKAL 的新程式語言，**不是** Python 方言，也**不是** runtime transpiler。它僅被定位為「RRKAL contract authoring sugar」，用比較人類可讀的宣告語法產生既有的 RRKAL JSON。它不創造任何新的 runtime truth，只編譯成靜態的 JSON 契約檔。
 > 2. **獨立外部 Repo 定位**：為確保「全域契約語法糖」實驗能力不污染 `vis_2_dis`（壓縮層/皮層/渲染層之間的 RendererSkinAsset 外部 reference prototype），本專案物理隔離於獨立倉庫 `rrkal-contract-islands` 中，不塞入 `vis_2_dis` 主線。
-> 3. **產品專案 100% 唯讀**：本專案對以下四大產品與原型專案保持 100% 唯讀存取，嚴禁任何形式的寫入或修改：
+> 3. **產品專案唯讀**：本專案對以下四大產品與原型專案保持唯讀存取，嚴禁任何形式的寫入或修改：
 >    * `APIkeys_collection`
 >    * `rrkal-visual-compressor`
 >    * `RRKAL_displaytools`
 >    * `vis_2_dis` (外部皮層原型基準線)
 >    嚴禁開啟這些產品專案的 branch/PR、嚴禁生成產品文件或進行任何產品 integration。
-> 4. **嚴格 Non-goals**：**No eval, No exec, No import hook, No Python AST rewrite, No runtime transpiler, No monkeypatch, No Python dialect, No dependency injection, No shell command execution, No arbitrary file writes outside output dir.** 本專案僅是外部靜態 parser 雛形，不具備任何執行期副作用。
-> 5. **第一階段 SkinSpec Island 範本限制**：僅支援將皮層契約語法（`.skinisland`）靜態解析並編譯為與 `RendererSkinAsset` 相容的 JSON manifest，不輸出任何 Python 程式碼，不執行任何程式碼。
-> 6. **Parser 極致安全與零依賴**：詞法掃描與語法解析完全為零依賴或 Python 標準庫優先，手寫 Tokenizer 與 Parser，不調用任何危險動態求值函數。
+> 4. **嚴格 Non-goals**：**No eval, No exec, No import hook, No Python AST rewrite, No runtime transpiler, No monkeypatch, No Python dialect, No dependency injection, No shell command execution, No arbitrary file writes outside output dir.** 本專案僅是外部靜態 parser 雛形，不具備 any 執行期副作用。
+> 5. **第一階段 SkinSpec Island 範本限制**：僅支援將皮層契約語法（`.skinisland`）靜態解析並編譯為與 `RendererSkinAsset` 相容的 JSON manifest，不輸出 any Python 程式碼，不執行 any 程式碼。
+> 6. **Parser 安全設計與零依賴**：詞法掃描與語法解析完全為零依賴或 Python 標準庫優先，手寫 Tokenizer 與 Parser，不調用 any 危險動態求值函數。
 
 ---
 

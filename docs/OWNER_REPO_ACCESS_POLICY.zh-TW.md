@@ -1,5 +1,11 @@
 # 產品 Repo 唯讀存取政策與安全邊界防禦
 
+> [!IMPORTANT]
+> **專案治理與非生產聲明：**
+> * **非生產環境就緒 (Not production-ready)**：本實驗專案產出之代碼與工具僅作為外部原型參考（external reference prototype），絕非生產就緒代碼。
+> * **未授權合併產品 Repo (Not authorized for product repo integration)**：嚴禁將本專案的任何編譯或工具代碼併入三大產品倉庫中，主線倉庫維持唯讀。
+> * **需要 O_1 審查 (Requires o_1 review before product adoption)**：本專案之機制若要被產品主線採用，必須經過 `o_1` 進行嚴格審查與正式授權。
+
 本文件明確規定 `rrkal-contract-islands`（全域契約語法糖實驗室）在與主產品專案協同、自檢測試及執行過程中的產品 Repo 存取限制與物理邊界防禦政策。
 
 ---

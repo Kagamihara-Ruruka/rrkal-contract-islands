@@ -1,5 +1,11 @@
 # 設計哲學與原則 (Design Principles)
 
+> [!IMPORTANT]
+> **專案治理與非生產聲明：**
+> * **非生產環境就緒 (Not production-ready)**：本實驗專案產出之代碼與工具僅作為外部原型參考（external reference prototype），絕非生產就緒代碼。
+> * **未授權合併產品 Repo (Not authorized for product repo integration)**：嚴禁將本專案的任何編譯或工具代碼併入三大產品倉庫中，主線倉庫維持唯讀。
+> * **需要 O_1 審查 (Requires o_1 review before product adoption)**：本專案之機制若要被產品主線採用，必須經過 `o_1` 進行嚴格審查與正式授權。
+
 本文件定義 `rrkal-contract-islands`（全域契約語法糖實驗室）的核心設計哲學與實作原則，作為跨 Agent 協作開發與代碼審閱時的最高指導綱領。
 
 ---
@@ -17,7 +23,7 @@
 
 ---
 
-## 2. 極致安全與零漏洞原則 (Zero-Vulnerability Architecture)
+## 2. 安全防範與零漏洞設計原則 (Zero-Vulnerability Architecture)
 
 由於語法糖解析器涉及文字結構處理，安全是我們不可動搖的第一防禦線：
 

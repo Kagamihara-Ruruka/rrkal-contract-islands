@@ -102,7 +102,7 @@ def validate_generated_manifest(json_path, vis_2_dis_root=None):
             # 因此 Ingestion 容器的根目錄應為 manifest.json 的上上級目錄
             asset_dir = os.path.abspath(os.path.join(os.path.dirname(json_path), "..", ".."))
             validate_fn(asset_dir)
-            print("[+] Ingestion 聯鎖驗證完全通過！成果與主線 Ingestion 標準 100% 一致！")
+            print("[+] Ingestion 聯鎖驗證：external reference prototype pass with notes")
             return True
         except Exception as e:
             print(f"[X] 聯鎖驗證失敗: {e}")
